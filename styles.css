@@ -1,0 +1,223 @@
+:root {
+  --bg: #f6f5f1;
+  --ink: #1b1a17;
+  --muted: #5f5b54;
+  --line: #d9d4ca;
+  --paper: #fffcf7;
+  --shot: #ece8e0;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.topbar {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 0;
+}
+
+.product {
+  margin: 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+
+.hero {
+  padding: 7.5rem 1.5rem 6.5rem;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.9rem, 6.6vw, 5.6rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+.subtitle {
+  max-width: 56rem;
+  margin: 1.5rem auto 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  line-height: 1.45;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  margin-top: 2.25rem;
+  padding: 0.8rem 1.45rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.cta:hover {
+  background: #322f2a;
+}
+
+.sheet {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+}
+
+.block {
+  padding: 0 0 5.5rem;
+}
+
+.block h2 {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.block p {
+  margin: 0;
+}
+
+.command {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem 1.25rem;
+  margin-bottom: 1.15rem;
+  padding: 1.15rem 1.15rem 1.15rem 1.3rem;
+  border: 1px solid var(--line);
+  border-radius: 1.1rem;
+  background: var(--paper);
+}
+
+.command pre {
+  flex: 1 1 14rem;
+  min-width: 0;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.command code {
+  font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, "Liberation Mono", monospace;
+  font-size: clamp(1.12rem, 2.6vw, 1.65rem);
+  line-height: 1.45;
+}
+
+.command .pkg {
+  white-space: nowrap;
+}
+
+.copy {
+  flex: none;
+  min-width: 5.75rem;
+  min-height: 2.75rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.copy:hover,
+.copy.is-copied {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.note {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.note a {
+  color: var(--ink);
+}
+
+.shot {
+  aspect-ratio: 16 / 10;
+  border: 1px dashed var(--line);
+  border-radius: 1.1rem;
+  background: var(--shot);
+}
+
+.foot {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem 4.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.foot a {
+  color: var(--ink);
+}
+
+.foot p {
+  margin: 0.7rem 0 0;
+}
+
+@media (max-width: 40rem) {
+  .hero {
+    padding: 4.5rem 1.25rem 4rem;
+  }
+
+  .topbar,
+  .sheet,
+  .foot {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .block {
+    padding-bottom: 3.75rem;
+  }
+}
