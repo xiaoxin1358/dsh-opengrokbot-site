@@ -29,7 +29,7 @@
         <section class="block" aria-labelledby="install-title">
           <h2 id="install-title">安装</h2>
           <div class="command">
-            <pre><code id="install-command">dsh plugin --profile web add dsh-opengrokbot</code></pre>
+            <pre><code id="install-command">dsh plugin --profile web add <span class="pkg">dsh-opengrokbot</span></code></pre>
             <button type="button" class="copy" id="copy-install" aria-describedby="copy-status">复制</button>
           </div>
           <p id="copy-status" class="visually-hidden" aria-live="polite"></p>
@@ -80,8 +80,13 @@
             }, 1600);
           }
 
+          function fail() {
+            status.textContent = "未能复制，请手动选择命令";
+          }
+
           function legacy() {
             var area = document.createElement("textarea");
+            var ok = false;
             area.value = text;
             area.setAttribute("readonly", "");
             area.style.position = "fixed";
@@ -89,19 +94,23 @@
             document.body.appendChild(area);
             area.select();
             try {
-              document.execCommand("copy");
-            } catch (err) {}
+              ok = document.execCommand("copy");
+            } catch (err) {
+              ok = false;
+            }
             document.body.removeChild(area);
+            return ok;
           }
 
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(text).then(finish).catch(function () {
-              legacy();
-              finish();
+              if (legacy()) finish();
+              else fail();
             });
-          } else {
-            legacy();
+          } else if (legacy()) {
             finish();
+          } else {
+            fail();
           }
         });
       })();
