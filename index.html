@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>dsh-opengrokbot</title>
+    <meta name="description" content="dsh 插件。把 OpenMausBot 接进 DeepSeek Harness（dsh）的侧栏和主区。">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <p class="product">dsh-opengrokbot</p>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>dsh-opengrokbot</h1>
+        <p class="subtitle">把 OpenMausBot 接进 DeepSeek Harness（dsh）的侧栏和主区。</p>
+        <a class="cta" href="https://www.npmjs.com/package/dsh-opengrokbot">在 npm 查看</a>
+      </section>
+
+      <div class="sheet">
+        <section class="block" aria-labelledby="what-title">
+          <h2 id="what-title">是什么</h2>
+          <p>dsh 插件。把 OpenMausBot 接进 DeepSeek Harness（dsh）的侧栏和主区。</p>
+        </section>
+
+        <section class="block" aria-labelledby="install-title">
+          <h2 id="install-title">安装</h2>
+          <div class="command">
+            <pre><code id="install-command">dsh plugin --profile web add dsh-opengrokbot</code></pre>
+            <button type="button" class="copy" id="copy-install" aria-describedby="copy-status">复制</button>
+          </div>
+          <p id="copy-status" class="visually-hidden" aria-live="polite"></p>
+          <p class="note">
+            <a href="https://www.npmjs.com/package/dsh-opengrokbot">npmjs.com/package/dsh-opengrokbot</a>
+            · 0.1.0
+          </p>
+          <p class="note">验收线：dsh 0.2.0-rc.2</p>
+        </section>
+
+        <section class="block" aria-labelledby="prereq-title">
+          <h2 id="prereq-title">前提</h2>
+          <p>只安装这个插件不够，还需要本机的 OpenMausBot。</p>
+        </section>
+
+        <section class="block" aria-labelledby="shot-title">
+          <h2 id="shot-title">截图占位</h2>
+          <div class="shot" role="img" aria-label="截图占位"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <a href="https://www.npmjs.com/package/dsh-opengrokbot">dsh-opengrokbot · npm</a>
+      <p>详细开发在私有仓</p>
+    </footer>
+
+    <script>
+      (function () {
+        var button = document.getElementById("copy-install");
+        var command = document.getElementById("install-command");
+        var status = document.getElementById("copy-status");
+        if (!button || !command || !status) return;
+
+        var label = "复制";
+
+        button.addEventListener("click", function () {
+          var text = command.textContent.replace(/\s+/g, " ").trim();
+
+          function finish() {
+            button.textContent = "已复制";
+            button.classList.add("is-copied");
+            status.textContent = "已复制安装命令";
+            window.setTimeout(function () {
+              button.textContent = label;
+              button.classList.remove("is-copied");
+              status.textContent = "";
+            }, 1600);
+          }
+
+          function legacy() {
+            var area = document.createElement("textarea");
+            area.value = text;
+            area.setAttribute("readonly", "");
+            area.style.position = "fixed";
+            area.style.left = "-9999px";
+            document.body.appendChild(area);
+            area.select();
+            try {
+              document.execCommand("copy");
+            } catch (err) {}
+            document.body.removeChild(area);
+          }
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(finish).catch(function () {
+              legacy();
+              finish();
+            });
+          } else {
+            legacy();
+            finish();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
