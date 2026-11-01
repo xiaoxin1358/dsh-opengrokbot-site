@@ -4,7 +4,6 @@
   --muted: #5f5b54;
   --line: #d9d4ca;
   --paper: #fffcf7;
-  --shot: #ece8e0;
   color-scheme: light;
 }
 
@@ -182,11 +181,18 @@ a:hover {
   color: var(--ink);
 }
 
-.shot {
-  aspect-ratio: 16 / 10;
-  border: 1px dashed var(--line);
+.shots {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.shots img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
   border-radius: 1.1rem;
-  background: var(--shot);
+  background: var(--paper);
 }
 
 .foot {
